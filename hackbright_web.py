@@ -52,8 +52,10 @@ def get_project(title):
     """Given title, get title, descr, and max grade of project"""
 
     row = hackbright.get_project_by_title(title)
+    student_list = hackbright.get_grades_by_title(title)
 
-    return render_template("project_info.html", row=row)
+
+    return render_template("project_info.html", row=row, student_list=student_list)
 
 
 if __name__ == "__main__":

@@ -11,4 +11,13 @@
 	</p>
 </ul>
 
+<ul>
+	{% for student_github, grade in student_list %}
+	<p>
+		<li>Student: <a href="/student?github={{ student_github }}">{{ student_github }}</a></li>
+		<li>Grade: {{ grade }}</li>
+	</p>
+	{% endfor %}
+</ul>
+
 {% endblock %}
