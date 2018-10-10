@@ -9,19 +9,21 @@
 		{% for first_name, last_name, github in students %}
 			<p>
 
-			<li>Student: <a href="/student/{{ github }}">{{ first_name }} {{ last_name }}</a></li>
-			<li>Github: {{ github }}</li>
+			<li><a href="/student/{{ github }}">{{ first_name }} {{ last_name }}</a></li>
 			</p>
 		{% endfor %}
 	</ul>
+	<h4><a href="/new-student">Add a student</a></h4><br>
 	<label for="Project List">
 	<h3>Project List</h3>
 	<ul>
 		{% for title in projects %}
 			<p>
-			<li>Title: <a href="/project/{{ title[0] }}">{{ title[0] }}</a></li>
+			<li><a href="/project/{{ title[0] }}">{{ title[0] }}</a></li>
 			</p>
 		{% endfor %}
 	</ul>
+	<h4><a href="/new-project">Add a project</a></h4><br>
+
 
 {% endblock %}
