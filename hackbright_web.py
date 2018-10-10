@@ -7,15 +7,23 @@ import hackbright
 app = Flask(__name__)
 
 
-@app.route("/student")
-def get_student():
+@app.route("/")
+def show_homepage():
+
+    student_list = hackbright.get_student_list()
+    project_list = hackbright.get_project_list()
+
+    return render_template("homepage.html",
+                            students=student_list,
+                            projects=project_list)
+
+
+@app.route("/student/<github>")
+def get_student(github):
     """Show information about a student."""
 
-    github = request.args.get('github')
-
     first, last, github = hackbright.get_student_by_github(github)
-
-    row = hackbright.get_grades_by_github(github) 
+    row = hackbright.get_grades_by_github(github)
 
     return render_template("student_info.html",
                            first=first,
@@ -23,17 +31,20 @@ def get_student():
                            github=github,
                            row=row)
 
+
 @app.route("/student-search")
 def get_student_form():
     """Show form for searching for a student."""
 
     return render_template("student_search.html")
 
+
 @app.route("/new-student")
 def new_student():
     """Display form to collect new student info."""
 
     return render_template("new_student.html")
+
 
 @app.route("/add/student", methods=['POST'])
 def add_student():
@@ -47,13 +58,13 @@ def add_student():
 
     return render_template("student_info.html", first=first_name, last=last_name, github=github)
 
+
 @app.route("/project/<title>")
 def get_project(title):
     """Given title, get title, descr, and max grade of project"""
 
     row = hackbright.get_project_by_title(title)
     student_list = hackbright.get_grades_by_title(title)
-
 
     return render_template("project_info.html", row=row, student_list=student_list)
 

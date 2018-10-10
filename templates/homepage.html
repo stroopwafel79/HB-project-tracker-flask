@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Students and Projects{% endblock %}
+
+{% block content %}
+	<label for="Student List">
+	<h3>Student List</h3>
+	</label>
+	<ul>
+		{% for first_name, last_name, github in students %}
+			<p>
+
+			<li>Student: <a href="/student/{{ github }}">{{ first_name }} {{ last_name }}</a></li>
+			<li>Github: {{ github }}</li>
+			</p>
+		{% endfor %}
+	</ul>
+	<label for="Project List">
+	<h3>Project List</h3>
+	<ul>
+		{% for title in projects %}
+			<p>
+			<li>Title: <a href="/project/{{ title[0] }}">{{ title[0] }}</a></li>
+			</p>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
