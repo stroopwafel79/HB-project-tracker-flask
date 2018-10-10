@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Project Information{% endblock %}
+
+{% block content %}
+
+<ul>
+	<p> 
+		<li>Project: {{ row[0] }}</li>
+		<li>Description: {{ row[1] }}</li>
+		<li>Max Grade: {{ row[2] }}</li>
+	</p>
+</ul>
+
+{% endblock %}

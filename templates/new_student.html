@@ -4,13 +4,22 @@
 	<title>New Student Info</title>
 </head>
 <body>
-	<form action="/add-student" method="POST">
-		<label for="first_name">First Name:</label>
-		<input type="text" name="first_name"><br>
-		<label for="last_name">Last Name:</label>
-		<input type="text" name="last_name"><br>
-		<label for="github">Github:</label>
-		<input type="text" name="github"><br>
+	<form action="/add/student" method="POST">
+		<p>
+			<label for="first_name">First Name:</label>
+			<input type="text" name="first_name">
+		<p>
+
+		<p>
+			<label for="last_name">Last Name:</label>
+			<input type="text" name="last_name">
+		</p>
+
+		<p>
+			<label for="github">Github:</label>
+			<input type="text" name="github">
+		</p>
+
 		<input type="submit" value="add student!">
 	</form>
 </body>

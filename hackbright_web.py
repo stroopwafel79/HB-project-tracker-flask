@@ -35,16 +35,25 @@ def new_student():
 
     return render_template("new_student.html")
 
-@app.route("/add-student", methods=['POST'])
+@app.route("/add/student", methods=['POST'])
 def add_student():
     """Adds a student to the database."""
 
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     github = request.form.get('github')
+
     hackbright.make_new_student(first_name, last_name, github)
 
     return render_template("student_info.html", first=first_name, last=last_name, github=github)
+
+@app.route("/project/<title>")
+def get_project(title):
+    """Given title, get title, descr, and max grade of project"""
+
+    row = hackbright.get_project_by_title(title)
+
+    return render_template("project_info.html", row=row)
 
 
 if __name__ == "__main__":
